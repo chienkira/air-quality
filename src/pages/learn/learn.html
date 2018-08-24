@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Learn</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-scroll scrollY="true" style="height: 100%;">
+    <h2>Learn about Air Quality Index</h2>
+    <p>The table below defines the Air Quality Index scale as defined by the US-EPA 2016 standard.</p>
+
+    <ion-row class="row header">
+      <ion-col class="col" col-2>AQI</ion-col>
+      <ion-col class="col" col-3>Air Pollution Level</ion-col>
+      <ion-col class="col">Health Implications</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#56ccf2;">
+      <ion-col class="col" col-2>0 - 50</ion-col>
+      <ion-col class="col" col-3>Good</ion-col>
+      <ion-col class="col">Air quality is considered satisfactory, and air pollution poses little or no risk</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#F2994A">
+      <ion-col class="col" col-2>51 -100</ion-col>
+      <ion-col class="col" col-3>Moderate</ion-col>
+      <ion-col class="col">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number
+        of people who are unusually sensitive to air pollution.</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#fe8c00;">
+      <ion-col class="col" col-2>101-150</ion-col>
+      <ion-col class="col" col-3>Unhealthy for Sensitive Groups</ion-col>
+      <ion-col class="col">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#f83600;">
+      <ion-col class="col" col-2>151-200</ion-col>
+      <ion-col class="col" col-3>Unhealthy</ion-col>
+      <ion-col class="col">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#b50518;">
+      <ion-col class="col" col-2>201-300</ion-col>
+      <ion-col class="col" col-3>Very Unhealthy</ion-col>
+      <ion-col class="col">Health warnings of emergency conditions. The entire population is more likely to be affected.</ion-col>
+    </ion-row>
+    <ion-row class="row" style="background-color:#610661;">
+      <ion-col class="col" col-2>300+</ion-col>
+      <ion-col class="col" col-3>Hazardous</ion-col>
+      <ion-col class="col">Health alert: everyone may experience more serious health effects</ion-col>
+    </ion-row>
+    
+    <a class="item" href="http://aqicn.org/scale/" onclick="window.open('http://aqicn.org/scale/', '_system', 'location=yes'); return false;">
+      Learn more at AQICN.ORG
+    </a>
+  </ion-scroll>
+</ion-content>

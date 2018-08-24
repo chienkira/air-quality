@@ -1,5 +1,7 @@
 {
   "name": "playionic",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

@@ -1,0 +1,26 @@
+page-learn {
+
+  .scroll-content {
+    overflow: hidden;
+    padding: 4px;
+  }
+  
+  .header .col {
+    background-color:lightgrey;
+    font-weight: bold;
+  }
+  
+  .col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+  }
+  
+  .col:last-child {
+    border-right: solid 1px grey;
+  }
+  
+  .row:last-child .col {
+    border-bottom: solid 1px grey;
+  }
+}

@@ -1,18 +1,89 @@
 <ion-header>
+
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
+    <ion-buttons start>
+      <button menuToggle ion-button icon-only style="color:white">
+        <ion-icon name="ios-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>AIR POLLUTION</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only style="color:white" (click)="openLearnPage()">
+        <ion-icon name="ios-help"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content scroll="false">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="dots" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <div class="smog {{aqiStatus(aqi.data.aqi).code}}" style="background:url(assets/imgs/clouds.png) 25% 100% repeat-x"></div>
+
+  <div class="pollution-back {{aqiStatus(aqi.data.aqi).code}}">
+    <ion-icon name="ios-nuclear-outline" class="pollution-sign"></ion-icon>
+    <div class="pollution-time">TODAY</div>
+    <div class="pollution-value">{{aqi.data.aqi}}</div>
+
+    <div class="aqi-extra" padding style="left:0">
+      {{aqi.data.city?aqi.data.city.name:'Unknown'}}
+    </div>
+    <div class="aqi-extra" padding style="right:0">
+      {{aqi.data.dominentpol?'Pollutant '+aqi.data.dominentpol:''}}
+    </div>
+  </div>
+
+  <div class="aqi-status {{aqiStatus(aqi.data.aqi).code}}">
+    <ion-scroll scrollY="true" style="height: 100%">
+
+      <ion-list no-lines>
+        <h2 color="secondary aqi-readable">{{aqiStatus(aqi.data.aqi).val}}</h2>
+
+        <ion-list-header>
+          <ion-item>
+            PM2.5
+            <ion-badge color="danger" item-end>{{aqi.data.iaqi.pm25.v}}</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-range min="0" max="500" step="25" snaps="true" color="danger" disabled [(ngModel)]="aqi.data.iaqi.pm25.v">
+              <ion-icon range-left name="medkit"></ion-icon>
+              <ion-icon range-right name="nuclear"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-list-header>
+
+        <ion-list-header>
+          <ion-item>
+            NO2
+            <ion-badge color="danger" item-end>{{aqi.data.iaqi.no2.v}}</ion-badge>
+          </ion-item>
+        </ion-list-header>
+
+        <ion-list-header>
+          <ion-item>
+            SO2
+            <ion-badge color="danger" item-end>{{aqi.data.iaqi.so2.v}}</ion-badge>
+          </ion-item>
+        </ion-list-header>
+
+        <ion-list-header>
+          <ion-item>
+            PM10
+            <ion-badge color="danger" item-end>{{aqi.data.iaqi.pm10.v}}</ion-badge>
+          </ion-item>
+        </ion-list-header>
+      </ion-list>
+
+      <div class="chart-container">
+        <canvas #barCanvas class="aqi-graph" style="height:250px">
+        </canvas>
+      </div>
+
+    </ion-scroll>
+  </div>
 </ion-content>
