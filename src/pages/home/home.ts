@@ -36,6 +36,11 @@ export class HomePage {
       .toPromise()
       .then(response => {
         loading.dismiss();
+        if (response.json().status === 'nug') {
+          // retry
+          this.reload();
+          return;
+        }
         if (response.json().status !== 'ok') {
           let alert = this.alertCtrl.create({
             title: 'Error',
@@ -73,12 +78,6 @@ export class HomePage {
     } else {
       return { code: '', val: '' }
     }
-  }
-  doRefresh(refresher) {
-    this.reload();
-    setTimeout(() => {
-      refresher.complete();
-    }, 300);
   }
   openLearnPage() {
     // Nav push so we can use back button
